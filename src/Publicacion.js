@@ -34,8 +34,8 @@ function Publicacion() {
   }
 
   const editar = () => {
-    var dataNueva = data;
-    dataNueva.map(publi => {
+    var dataNueva = [...data]; // Hacer una copia del array original para no modificarlo directamente
+    dataNueva.forEach(publi => {
       if (publi.id === publicacionSeleccionada.id) {
         publi.titulo = publicacionSeleccionada.titulo;
         publi.autor = publicacionSeleccionada.autor;
@@ -46,6 +46,7 @@ function Publicacion() {
     setData(dataNueva);
     setModalEditar(false);
   }
+  
 
   const eliminar = () => {
     setData(data.filter(publi => publi.id !== publicacionSeleccionada.id));
